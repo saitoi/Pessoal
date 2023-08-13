@@ -1,0 +1,74 @@
+/* ONLY_PRINTING_LETTERS_IN_MAIN_FUNCTION */
+
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <fstream>
+#include <new>
+#include "read_string.h"
+using namespace std;
+
+void print_letters(char v[20],int size){
+ size = 0;
+ int cont;
+ string obj = random_string();
+ char* arr;
+ arr = &obj[0];
+ while(arr[size]!=' '){
+  size++;
+ }
+ for(cont=0;cont<size;cont++){
+  v[cont] = '_';
+ }
+ for(cont=0;cont<size;cont++){
+  cout << v[cont] << " ";
+ }
+}
+
+/* PRINT_UNDER FUNCTION */
+
+#include <fstream>
+#include <iostream>
+#include <time.h>
+#include <cstring>
+#include <string>
+using namespace std;
+     
+void print_under(char v[20],int *tam){
+ int cont = 0;
+ int cont1 = 0;
+
+ ifstream input("/Users/pedrosaito/Documents/code/cpp_test/proj_/bank.txt");
+ string txtlido[200];
+
+ for(string line; getline(input, line);){
+ txtlido[cont] = line; //Permite acrescentar 'linha por linha' ao conteúdo existente
+ cont++;
+ }
+
+ int random;
+ srand((unsigned)time(NULL));
+ random = rand()%55;
+ string obj = txtlido[random];
+ char *arr;
+ arr = &obj[0];
+ while(arr[cont1]!=' '){
+  cont1++;
+ }
+ cout << txtlido[random] << endl;
+ cont = 0;
+ if(*tam < 2){
+ for(cont=0;cont<cont1;cont++){
+   v[cont] = '_';
+  }
+ }
+  
+ for(cont=0;cont<cont1;cont++){
+  cout << v[cont] << " ";
+ }
+ cout << endl;
+ for(cont=0;cont<cont1;cont++){
+  cout << cont << " ";
+ }
+ *tam = cont1;
+}
